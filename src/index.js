@@ -1,5 +1,5 @@
 const plugin = require('tailwindcss/plugin');
-const prefixSelector = require('tailwindcss/lib/util/prefixSelector');
+const {default: prefixSelector} = require('tailwindcss/lib/util/prefixSelector');
 const {
     applyPseudoToMarker,
     updateAllClasses,
