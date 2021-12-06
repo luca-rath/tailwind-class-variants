@@ -1,8 +1,9 @@
 {
   "name": "tailwind-class-variants",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "src/index.js",
   "license": "MIT",
+  "keywords": ["tail"],
   "repository": "https://github.com/luca-rath/tailwind-class-variants",
   "peerDependencies": {
     "tailwindcss": "^2.2.0"

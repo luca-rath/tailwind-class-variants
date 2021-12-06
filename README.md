@@ -38,6 +38,18 @@ This will then generate the following variants:
 - `group-is-active`
 - `peer-is-active`
 
+It's also possible to add more complex variants like in the following example:
+
+```js
+// tailwind.config.js
+require('tailwind-class-variants')({
+  variants: [
+      // ...
+      ['aria-expanded', 'is([aria-expanded]:not([aria-expanded="false"]))'],
+  ],
+})
+```
+
 ## Basic usage
 
 ```html

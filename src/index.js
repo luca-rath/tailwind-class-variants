@@ -1,3 +1,4 @@
+const assert = require('assert');
 const plugin = require('tailwindcss/plugin');
 const {default: prefixSelector} = require('tailwindcss/lib/util/prefixSelector');
 const {
@@ -7,9 +8,31 @@ const {
     transformAllClasses,
 } = require('tailwindcss/lib/util/pluginUtils');
 
-module.exports = plugin.withOptions(({ classes = [] } = {}) => {
+module.exports = plugin.withOptions(({ variants = [] } = {}) => {
     return function ({ addVariant, config }) {
-        let pseudoVariants = classes.map((x) => [x, `is(.${x})`]);
+        let pseudoVariants = variants.map((variant) => {
+            let variantName, selector;
+
+            if (Array.isArray(variant)) {
+                assert(variant.length === 2);
+
+                variantName = variant[0];
+                assert(typeof variantName === 'string');
+                assert(variantName);
+
+                selector = variant[1];
+                assert(typeof selector === 'string');
+                assert(selector);
+            } else {
+                assert(typeof variant === 'string');
+                assert(variant);
+
+                variantName = variant;
+                selector = `is(.${variant})`;
+            }
+
+            return [variantName, selector];
+        });
 
         // The following code is copied from https://github.com/tailwindlabs/tailwindcss/blob/v2.2.19/src/jit/corePlugins.js#L149-L209
         for (let variant of pseudoVariants) {
