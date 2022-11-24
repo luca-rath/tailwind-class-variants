@@ -1,3 +1,5 @@
+> :warning: Tailwind itself includes this feature since v3.2, consider to upgrade.
+
 # tailwind-class-variants
 
 A tailwindcss plugin that makes it possible to add conditional styling to an element only if that element has a specific class.
